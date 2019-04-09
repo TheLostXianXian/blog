@@ -16,7 +16,7 @@ npm i webpack webpack-cli -D
 ```
 执行`npm run build`
 
-![没有入口文件](.\pics\webapck-no-entry-error.PNG)
+![没有入口文件](https://github.com/TheLostXianXian/blog/blob/master/hello-webpack/pics/webapck-no-entry-error.PNG?raw=true)
 
 1. error: 没有入口文件
 2. warning: 建议设置`mode`选项
@@ -39,7 +39,7 @@ createDiv()
 
 在`dist`中新建一个`index.html`, 把生成的`main.js`连接上去:
 
-![hello webpack](.\pics\hello-webpack.PNG)
+![hello webpack](https://github.com/TheLostXianXian/blog/blob/master/hello-webpack/pics/hello-webpack.PNG?raw=true)
 
 ### production & development
 webpack4之前, 一个项目会有设置两种类型文件:
@@ -57,7 +57,7 @@ webpack4之前, 一个项目会有设置两种类型文件:
 ```
 分别执行`npm run dev`和`npm run build`
 
-![run dev和run build](.\pics\webpack-run-dev-build.PNG)
+![run dev和run build](https://github.com/TheLostXianXian/blog/blob/master/hello-webpack/pics/webpack-run-dev-build.PNG?raw=true)
 
 可以看到这次并没有报错, 执行`npm run dev`打包的是未压缩的代码, 而`npm run build`进行了压缩, 要比
 前者小很多:
@@ -124,7 +124,7 @@ module.exports = {
 #### 使用babel-polyfill 解决兼容性问题
 使用了babel, 老版本浏览器依然不支持一些语法的使用, 比如: Promise, WeakMap, 全局对象以及一些方法等等
 
-![ie不支持includes](.\pics\ie-not-support-inlcudes.PNG)
+![ie不支持includes](https://github.com/TheLostXianXian/blog/blob/master/hello-webpack/pics/ie-not-support-inlcudes.PNG?raw=true)
 
 ```
 npm i @babel/polyfill -S
@@ -136,22 +136,22 @@ import "@babel/polyfill"
 ```
 打包看看:
 babel-polyfill-without-usebuiltins-usage
-![没有按需加载polyfill](.\pics\babel-polyfill-without-usebuiltins-usage.PNG)
+![没有按需加载polyfill](https://github.com/TheLostXianXian/blog/blob/master/hello-webpack/pics/babel-polyfill-without-usebuiltins-usage.PNG?raw=true)
 
 什么, 就几行代码, 打包后竟然70KB, 完全不能忍.
 
 因为默认是加载了所有的polyfill, 所以打包的体积很大, 幸运的是, `@babel/present-env`中的`useBuiltIns`选项, 把它设置成`usage`, babel编译时, 可以只加载你使用到的polyfill. 这样可以大大减少打包后的体积. 再试试:
 
-![按需加载polyfill](.\pics\babel-polyfill-usebuiltins-usage.PNG)
+![按需加载polyfill](https://github.com/TheLostXianXian/blog/blob/master/hello-webpack/pics/babel-polyfill-usebuiltins-usage.PNG?raw=true)
 
 5KB, 感觉好多了. 并且, 真正实现了按需加载. 没有用的的方法ie还是不支持.
 
-![按需加载polyfill](.\pics\support-string-not-support-array.PNG)
+![按需加载polyfill](https://github.com/TheLostXianXian/blog/blob/master/hello-webpack/pics/support-string-not-support-array.PNG?raw=true)
 
 babel-polyfill-usebuiltins-usage
 等等, 还有个警告:
 
-![corejs错误](.\pics\warning-core-js.PNG)
+![corejs错误](https://github.com/TheLostXianXian/blog/blob/master/hello-webpack/pics/warning-core-js.PNG?raw=true)
 
 在`.babelrc`中添加`corejs`
 ```
@@ -280,6 +280,7 @@ module.exports = {
 ```
 
 ### 静态资源处理
+
 ```
 npm install file-loader -D
 ```
@@ -291,7 +292,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(PNG?raw=true|jpg|gif)$/,
         use: [
           {
             loader: 'file-loader',
@@ -305,6 +306,7 @@ module.exports = {
 ```
 
 ### development模式下,启动服务器并实时刷新
+
 ```
 npm i webpack-dev-server -D
 ```
@@ -319,6 +321,7 @@ npm i webpack-dev-server -D
 ```
 
 ## 使用webpack4建立react项目
+
 模仿`create-react-app`的结构, 搭建一个react项目, 并用sass预编译:
 
 ```
@@ -404,7 +407,8 @@ module.exports = (env, argv) => {
   }
 ```
 然后修改一下`App.scss`, 接着引入它. 执行 `npm run dev`:
-![hello-wepack-react](./pics/hello-webpack-react.PNG)
+
+![hello-wepack-react](https://github.com/TheLostXianXian/blog/blob/master/hello-webpack/pics/hello-webpack-react.PNG?raw=true)
 
 ## 使用webpack4建立vue项目
 同样的, 模仿vue-cli的结构. 搭建一个vue项目.
@@ -425,7 +429,7 @@ module.exports = (env, argv) => {
     │  main.js
     │
     ├─assets
-    │      logo.png
+    │      logo.PNG?raw=true
     │
     └─components
             HelloWorld.vue
@@ -458,6 +462,8 @@ npm i vue-loader vue-template-compiler @vue/babel-preset-app autoprefixer node-s
 }
 
 ```
+
+```
 // postcss.config.js
 
 const autoprefixer = require('autoprefixer')
@@ -467,6 +473,7 @@ module.exports = {
     autoprefixer({ browsers: 'last 10 version' })
   ]
 }
+```
 
 ```
 // webpack.config.js
@@ -510,18 +517,18 @@ module.exports = (env, argv) => {
 ```
 一个最简单的vue-cli项目也完成了:
 
-![hello-webpack-vue](./pics/hello-webpack-vue.png)
+![hello-webpack-vue](https://github.com/TheLostXianXian/blog/blob/master/hello-webpack/pics/hello-webpack-vue.PNG?raw=true)
 <details>
 
   <summary>参考链接</summary>
 
-  * (webpack官网)[https://webpack.js.org/]
-  * (Jefe’s Complete Guide: Webpack 4 + Babel 7 (Setup, Dependencies Compared, Entry, Output, Loaders, Plugins, Options, And DevTools))[https://medium.com/@jeffrey.allen.lewis/the-ultimate-2018-webpack-4-and-babel-setup-guide-npm-yarn-dependencies-compared-entry-points-866b577da6a]
-  * (babel-polyfill的几种使用方式)[https://www.jianshu.com/p/3b27dfc6785c]
-  * (webpack 4 ：从0配置到项目搭建)[https://segmentfault.com/a/1190000015490721]
-  * (babel 7 教程)[https://blog.zfanw.com/babel-js/]
-  * (Babel 官网)[https://babeljs.io/docs/en/usage]
-  * (babel7中 corejs 和 corejs2 的区别)[https://www.cnblogs.com/htoooth/p/9724609.html]
+  * [webpack官网](https://webpack.js.org/)
+  * [Jefe’s Complete Guide: Webpack 4 + Babel 7 (Setup, Dependencies Compared, Entry, Output, Loaders, Plugins, Options, And DevTools)](https://medium.com/@jeffrey.allen.lewis/the-ultimate-2018-webpack-4-and-babel-setup-guide-npm-yarn-dependencies-compared-entry-points-866b577da6a)
+  * [babel-polyfill的几种使用方式](https://www.jianshu.com/p/3b27dfc6785c)
+  * [webpack 4 ：从0配置到项目搭建](https://segmentfault.com/a/1190000015490721)
+  * [babel 7 教程](https://blog.zfanw.com/babel-js/)
+  * [Babel 官网](https://babeljs.io/docs/en/usage)
+  * [babel7中 corejs 和 corejs2 的区别](https://www.cnblogs.com/htoooth/p/9724609.html)
 
 </details>
 
